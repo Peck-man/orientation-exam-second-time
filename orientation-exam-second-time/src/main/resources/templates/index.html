@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:text="Homepage" href="http://localhost:8080"></a>
+<h1>See detail of mentors:</h1>
+<ul>
+    <a th:each="book, iter: ${list}" th:object="${book}" th:href="@{/mentor/{id}(id=*{id})}">
+        <li th:text="*{name}"></li>
+    </a>
+</ul>
+<h1>Add new mentor</h1>
+<form action="http://localhost:8080/mentor" method="post">
+    <label for="name"></label>
+    <input type="text" id="name" name="name">
+    <label for="1.B">1.B</label>
+    <input type="radio" id="1.B" name="className" value="1.B">
+    <label for="2.C">2.C</label>
+    <input type="radio" id="2.C" name="className" value="2.C">
+    <label for="4.D">4.D</label>
+    <input type="radio" id="4.D" name="className" value="4.D">
+    <input type="submit" value="Send">
+</form>
+</body>
+</html>

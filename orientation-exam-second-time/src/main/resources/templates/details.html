@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:text="Homepage" href="http://localhost:8080"></a>
+<h1>Mentor detail</h1>
+<ul>
+    <li th:text="'Name: ' + *{name}"></li>
+    <li th:text="'Class: ' + *{className}"></li>
+</ul>
+</body>
+</html>

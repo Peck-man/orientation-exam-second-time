@@ -1,0 +1,13 @@
+package com.gfa.orientationexamsecondtime;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OrientationExamSecondTimeApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrientationExamSecondTimeApplication.class, args);
+    }
+
+}
