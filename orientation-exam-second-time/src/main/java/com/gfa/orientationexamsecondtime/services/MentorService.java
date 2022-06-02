@@ -42,6 +42,10 @@ public class MentorService {
         return "redirect:/mentor/" + mentor.getId();
     }
 
+    public boolean isPresent(Long id){
+       return mentorsRepository.existsById(id);
+    }
+
     public ResponseEntity getMentors(String className) {
         if (studentClassRepository.existsByName(className)) {
             List<MentorDTO> list = new ArrayList<>();
@@ -52,11 +56,11 @@ public class MentorService {
         }
         return ResponseEntity.status(400).body("We dont have this class");
     }
-    public ResponseEntity updateMentor(int id, NewDataToMentor newDataToMentor){
+    public ResponseEntity updateMentor(Long id, NewDataToMentor newDataToMentor){
 
         String newName = newDataToMentor.getName();
         StudentClass newClass = findClass(newDataToMentor.getClassName());
-        Mentor mentor = findAll().get(id);
+        Mentor mentor = findAll().stream().filter(mentor1 -> mentor1.getId()==id).findFirst().get();
         mentor.setName(newName);
         mentor.setStudentClass(newClass);
         mentorsRepository.save(mentor);

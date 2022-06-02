@@ -42,12 +42,11 @@ public class MainController {
     }
 
     @PutMapping("api/mentors/{mentorId}")
-    public ResponseEntity updateMentor(@PathVariable Integer mentorId,
-                                       @RequestBody NewDataToMentor newDataToMentor){
-        mentorId-=1;
-        if (newDataToMentor.getClassName()==null){
+    public ResponseEntity updateMentor(@PathVariable Long mentorId,
+                                       @RequestBody NewDataToMentor newDataToMentor) {
+        if (newDataToMentor.getClassName() == null) {
             return ResponseEntity.status(400).body("Not valid className");
-        } else if (mentorId>mentorService.findAll().size()||mentorId<0) {
+        } else if (mentorService.isPresent(mentorId) || mentorId < 0) {
             return ResponseEntity.status(404).body("Not valid mentorId");
         }
         return mentorService.updateMentor(mentorId, newDataToMentor);
